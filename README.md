@@ -1,0 +1,1 @@
+# packer-for-golden-image-on-vsphere
