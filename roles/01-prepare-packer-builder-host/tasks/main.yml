@@ -1,0 +1,10 @@
+# tasks file for 01-prepare-packer-builder-host
+---
+- include_tasks: 01_download_packer.yml
+- include_tasks: 02_extract_packer.yml
+- include_tasks: 03_copy_packer.yml
+- include_tasks: 04_install_nginx.yml
+- include_tasks: 05_configure_nginx.yml
+- include_tasks: 06_configure_firewall.yml
+
+

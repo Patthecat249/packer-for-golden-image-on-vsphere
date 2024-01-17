@@ -1,9 +1,9 @@
 ---
-# vars file for 01-prepare-localhost
+# vars file for 01-prepare-packer-builder-host
 packer_installation_directory: "{{ dir_work }}packer/"
 packer_scripts_directory: "{{packer_installation_directory}}scripts/"
 packer_download_url: "https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_linux_amd64.zip"
 
 # Working Directories
+# this is the folder, where your packer-hcl-files will be placed
 dir_work: "/opt/sva/"
-dir_downloads: "{{ dir_work }}downloads/"

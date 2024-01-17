@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - 01-prepare-localhost
+    - 01-prepare-packer-builder-host

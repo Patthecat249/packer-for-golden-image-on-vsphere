@@ -1,4 +1,7 @@
 ---
+# Two folders will be created.
+# one for packer-stuff like hcl-files and you have to save your .vsphere-secrets.json
+# one folder for the scripts, that you can define in the build-section
 - name: Erstelle das Zielverzeichnis
   ansible.builtin.file:
     path: "{{ item }}"

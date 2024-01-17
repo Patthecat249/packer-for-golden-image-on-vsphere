@@ -1,5 +1,0 @@
----
-# defaults file for 01-prepare-localhost
-nginx_web_root: /usr/share/nginx/html
-firewall_allowed_ports:
-  - 80/tcp

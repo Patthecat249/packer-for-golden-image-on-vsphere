@@ -1,0 +1,8 @@
+---
+# defaults file for 01-prepare-packer-builder-host
+# This is your nginx-web-root-folder, where your will find your kickstart.cfg-files
+nginx_web_root: /usr/share/nginx/html
+
+# this is the port which will be allowed in your firewall on your packer-build-host
+firewall_allowed_ports:
+  - 80/tcp

@@ -1,5 +1,5 @@
 ---
-# handlers file for 01-prepare-localhost
+# handlers file for 01-prepare-packer-builder-host
 - name: Neustart des Nginx-Service
   ansible.builtin.service:
     name: nginx

@@ -4,4 +4,4 @@
   become: yes  # Falls sudo-Rechte erforderlich sind
 
   roles:
-    - 01-prepare-localhost
+    - 01-prepare-packer-builder-host

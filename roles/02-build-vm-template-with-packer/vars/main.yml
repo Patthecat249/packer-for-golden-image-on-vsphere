@@ -2,7 +2,6 @@
 # vars file for 02-build-vm-template-with-packer
 # Working Directories
 dir_work: "/opt/sva/"
-dir_downloads: "{{ dir_work }}downloads/"
 
 # packer_installation_directory: "{{ dir_work }}packer/"
 
