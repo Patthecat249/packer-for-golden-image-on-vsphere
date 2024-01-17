@@ -1,0 +1,6 @@
+---
+- name: Installiere Nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+    update_cache: yes

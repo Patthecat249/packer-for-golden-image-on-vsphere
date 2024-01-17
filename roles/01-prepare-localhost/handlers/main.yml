@@ -1,0 +1,6 @@
+---
+# handlers file for 01-prepare-localhost
+- name: Neustart des Nginx-Service
+  ansible.builtin.service:
+    name: nginx
+    state: restarted

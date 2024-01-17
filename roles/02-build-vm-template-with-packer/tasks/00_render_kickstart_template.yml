@@ -1,0 +1,8 @@
+---
+# Render kickstart-file
+- name: Platziere die Datei "{{kickstart_filename}}" im Nginx-Verzeichnis
+  ansible.builtin.copy:
+    src: templates/kickstart-template.j2
+    dest: "{{ nginx_web_root }}/{{kickstart_filename}}"
+    mode: '0644'
+

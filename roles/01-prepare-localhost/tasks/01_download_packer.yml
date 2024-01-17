@@ -1,0 +1,14 @@
+---
+- name: Erstelle das Zielverzeichnis
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - "{{ packer_installation_directory }}"
+    - "{{ packer_scripts_directory }}"
+
+- name: Lade Packer herunter
+  ansible.builtin.get_url:
+    url: "{{ packer_download_url }}"
+    dest: "{{ packer_installation_directory }}/packer.zip"
+    mode: '0644'

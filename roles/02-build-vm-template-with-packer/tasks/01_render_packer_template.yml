@@ -1,0 +1,14 @@
+---
+- name: Rendere die Packer-Template-Datei
+  ansible.builtin.template:
+    src: packer-hcl-template.j2
+    dest: "{{ packer_installation_directory }}/packer-hcl-template.pkr.hcl"
+    mode: '0644'
+
+# Render requirements-script
+- name: Rendere die Requirements-Script-Template-Datei
+  ansible.builtin.template:
+    src: requirements_script.j2
+    dest: "{{packer_scripts_directory}}requirements.sh"
+    mode: '0644'
+

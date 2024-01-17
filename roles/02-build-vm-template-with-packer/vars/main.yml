@@ -1,0 +1,48 @@
+---
+# vars file for 02-build-vm-template-with-packer
+# Working Directories
+dir_work: "/opt/sva/"
+dir_downloads: "{{ dir_work }}downloads/"
+
+# packer_installation_directory: "{{ dir_work }}packer/"
+
+# This is the host, where packer is installed
+packer_builder_hostname: "packer-build-host"
+packer_builder_ip: "10.0.249.20"
+packer_builder_subnet: "255.255.255.0"
+packer_builder_gateway: "10.0.249.1"
+packer_builder_dns_server_ip: "10.0.249.53"
+
+# These settings are for the vm-template
+vm_template_name: "template-rockylinux8-{{packer_build_version}}"
+vm_template_hostname: "template-rocky89"
+vm_template_ip: "10.0.249.65"
+vm_template_subnet: "255.255.255.0"
+vm_template_gateway: "10.0.249.1"
+vm_template_dns_server_ip: "10.0.249.53"
+vm_template_cpu: "2"
+vm_template_ram: "2048"   # 2GB
+vm_template_disk: "40960" # 40GB
+vm_guestostype: "centos8_64Guest"
+vm_root_user: "root"
+vm_root_userpassword: "Test1234"
+
+# These are the vcenter-settings
+vcenter_fqdn: "vcenter.home.local"
+vcenter_cluster: "cluster-home"
+vcenter_datacenter: "dc-home"
+vcenter_datastore: "esx-datengrab"
+vcenter_templatefolder: "Templates"
+vcenter_esxhost: "10.0.249.11"
+vcenter_network: "pg-home"
+vcenter_iso_path: "[nfs] downloaded-iso/linux/Rocky-8.9-x86_64-boot.iso"
+
+# Some general settings
+domain: "home.local"
+
+# The path for the kickstart-file
+kickstart_filename: "rocky89-boot.cfg"
+
+packer_build_version: "9-1"
+
+

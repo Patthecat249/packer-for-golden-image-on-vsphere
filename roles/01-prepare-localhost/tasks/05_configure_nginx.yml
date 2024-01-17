@@ -1,0 +1,17 @@
+---
+- name: Platziere die Datei "template-kickstart.j2" im Nginx-Verzeichnis
+  ansible.builtin.copy:
+    src: templates/template-kickstart.j2
+    dest: "{{ nginx_web_root }}/kickstart.cfg"
+    mode: '0644'
+
+- name: Platziere die Datei "nginx-conf.j2" im Nginx-Verzeichnis
+  ansible.builtin.template:
+    src: "templates/nginx-conf.j2"
+    dest: "/etc/nginx/nginx.conf"
+
+- name: Starte den Nginx-Service
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: yes

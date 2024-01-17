@@ -1,0 +1,6 @@
+---
+- name: Entpacke das Zip-File
+  ansible.builtin.unarchive:
+    src: "{{ packer_installation_directory }}/packer.zip"
+    dest: "{{ packer_installation_directory }}"
+    remote_src: yes

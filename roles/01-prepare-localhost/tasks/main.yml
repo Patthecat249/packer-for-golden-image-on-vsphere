@@ -1,0 +1,58 @@
+---
+- include_tasks: 01_download_packer.yml
+- include_tasks: 02_extract_packer.yml
+- include_tasks: 03_copy_packer.yml
+- include_tasks: 04_install_nginx.yml
+- include_tasks: 05_configure_nginx.yml
+- include_tasks: 06_configure_firewall.yml
+
+# tasks file for 01-prepare-localhost
+
+# Install Packer
+# tasks file for 04_install_prerequisites
+- name: "Install some toolsnet-tools, wget, nfs-utils, dnsmasq, tftp, pykickstart, selinux-tools and docs" 
+  ansible.builtin.yum:
+    name: 
+      - net-tools.x86_64
+      - wget.x86_64
+      - nfs-utils.x86_64
+      - nginx
+    state: present
+
+# # Create Working-Directories
+# - name: "Create Working Directories"
+#   ansible.builtin.file:
+#     path: "{{ item }}"
+#     state: directory
+#     recurse: true
+#   loop:
+#     - "{{ dir_packer }}"
+#     - "{{ dir_downloads }}"
+
+# # Download Packer
+# - name: Lade Packer herunter
+#   ansible.builtin.get_url:
+#     url: https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_darwin_amd64.zip
+#     dest: "{{ dir_downloads }}packer_1.10.0_darwin_amd64.zip"
+#     mode: '0644'
+
+# # Entpacker zip-File
+# - name: Entpacke das Zip-File
+#   ansible.builtin.unarchive:
+#     src: "{{ dir_downloads }}packer_1.10.0_darwin_amd64.zip"
+#     dest: "{{ dir_downloads }}"
+#     remote_src: yes
+
+# # Make packer executable
+# - name: Kopiere Packer nach /usr/local/bin
+#   ansible.builtin.copy:
+#     src: "{{ dir_downloads }}packer"
+#     dest: /usr/local/bin/packer
+#     mode: '0755'
+
+# Create vSphere-Credentials-File
+
+# Create kickstart-file
+
+# Install and configure a Webserver
+

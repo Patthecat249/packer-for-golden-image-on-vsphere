@@ -1,0 +1,61 @@
+{
+  "variables": {
+    "version": "9-1",
+    "HTTP_IP": "packer.home.local",
+    "HTTP_PATH": "rocky89-boot.cfg"
+  },
+  "sensitive-variables": ["vcenter_password"],
+  "provisioners": [
+    {
+      "type": "shell",
+      "expect_disconnect": true,
+      "execute_command": "bash '{{.Path}}'",
+      "script": "{{template_dir}}/scripts/requirements.sh"
+    }
+  ],
+  "builders": [
+    {
+      "type": "vsphere-iso",
+      "CPUs": 2,
+      "CPU_hot_plug": true,
+      "RAM": 2048,
+      "RAM_hot_plug": true,
+      "disk_controller_type": "pvscsi",
+      "guest_os_type": "centos8_64Guest",
+      "iso_paths": [
+        "[nfs] downloaded-iso/linux/Rocky-8.9-x86_64-boot.iso"
+      ],
+      "network_adapters": [
+        {
+          "network_card": "vmxnet3",
+          "network": "pg-home"
+        }
+      ],
+      "storage": [
+        {
+          "disk_size": 40000,
+          "disk_thin_provisioned": true
+        }
+      ],
+      "boot_command": [
+      "<up><tab> text ip=10.0.249.65::10.0.249.1:255.255.255.0:template-rocky89:ens192:none ipv6.disable=1 nameserver=10.0.249.53 inst.ks=http://{{ user `HTTP_IP` }}/{{ user `HTTP_PATH` }}<enter><wait><enter>"
+      ],
+      "ssh_password": "Test1234",
+      "ssh_username": "root",
+      "shutdown_command": "/sbin/halt -h -p",
+      "insecure_connection": "true",
+      "username": "{{ user `vcenter_username` }}",
+      "password": "{{ user `vcenter_password` }}",
+      "vcenter_server": "vcenter.home.local",
+      "datacenter": "dc-home",
+      "datastore": "esx-datengrab",
+      "vm_name": "template-rockylinux8-{{ user `version` }}",
+      "folder": "Templates",
+      "cluster": "cluster-home",
+      "host": "10.0.249.11",
+      "notes": "Template RockyLinux version {{ user `version` }}",
+      "convert_to_template": true,
+      "create_snapshot": false
+    }
+  ]
+}

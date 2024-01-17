@@ -1,0 +1,5 @@
+---
+# tasks file for 02-build-vm-template-with-packer
+- include_tasks: 00_render_kickstart_template.yml
+- include_tasks: 01_render_packer_template.yml
+- include_tasks: 02_execute_packer_init_build.yml

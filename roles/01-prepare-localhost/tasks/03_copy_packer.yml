@@ -1,0 +1,8 @@
+---
+- name: Kopiere Packer nach /usr/local/bin
+  ansible.builtin.copy:
+    src: "{{ packer_installation_directory }}packer"
+    dest: "/usr/local/bin/packer"
+    mode: '0755'
+    remote_src: true
+    force: true

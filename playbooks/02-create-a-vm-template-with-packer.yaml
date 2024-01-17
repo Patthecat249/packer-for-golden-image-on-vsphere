@@ -1,0 +1,7 @@
+---
+- name: Haupt-Playbook
+  hosts: packer
+  become: yes  # Falls sudo-Rechte erforderlich sind
+
+  roles:
+    - 02-build-vm-template-with-packer
