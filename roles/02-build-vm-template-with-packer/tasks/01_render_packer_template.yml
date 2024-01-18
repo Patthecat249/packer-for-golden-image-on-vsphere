@@ -2,7 +2,7 @@
 - name: Rendere die Packer-Template-Datei
   ansible.builtin.template:
     src: packer-hcl-template.j2
-    dest: "{{ packer_installation_directory }}/packer-hcl-template.pkr.hcl"
+    dest: "{{ packer_installation_directory }}/{{vm_template_name}}.pkr.hcl"
     mode: '0644'
 
 # Render requirements-script

@@ -11,6 +11,7 @@ packer_builder_ip: "10.0.249.20"
 packer_builder_subnet: "255.255.255.0"
 packer_builder_gateway: "10.0.249.1"
 packer_builder_dns_server_ip: "10.0.249.53"
+packer_build_version: "9-1"
 
 # These settings are for the vm-template
 vm_template_name: "template-rockylinux8-{{packer_build_version}}"
@@ -42,6 +43,6 @@ domain: "home.local"
 # The path for the kickstart-file
 kickstart_filename: "rocky89-boot.cfg"
 
-packer_build_version: "9-1"
+
 
 

@@ -36,6 +36,9 @@ git clone https://github.com/Patthecat249/packer-for-golden-image-on-vsphere.git
 cd packer-for-golden-image-on-vsphere/playbooks
 ansible-playbook 01-prepare-the-packer-build-host.yaml
 ansible-playbook 02-create-a-vm-template-with-packer.yaml
+
+# Some examples how to create a vm-template with extra vars
+ansible-playbook 02-create-a-vm-template-with-packer.yaml -e "packer_build_version=9-3"
 ```
 
 ## Details about the workflow

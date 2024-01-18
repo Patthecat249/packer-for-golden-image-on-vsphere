@@ -1,8 +1,8 @@
 ---
 - name: Packer init
   ansible.builtin.command:
-    cmd: "/usr/local/bin/packer init {{ packer_installation_directory }}packer-hcl-template.pkr.hcl"
+    cmd: "/usr/local/bin/packer init {{ packer_installation_directory }}{{vm_template_name}}.pkr.hcl"
 
 - name: Packer build
   ansible.builtin.command:
-    cmd: "/usr/local/bin/packer build -var-file {{ packer_installation_directory }}.vsphere-secrets.json {{ packer_installation_directory }}packer-hcl-template.pkr.hcl"
+    cmd: "/usr/local/bin/packer build -var-file {{ packer_installation_directory }}.vsphere-secrets.json {{ packer_installation_directory }}{{vm_template_name}}.pkr.hcl"
