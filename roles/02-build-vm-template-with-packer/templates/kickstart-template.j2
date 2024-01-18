@@ -1,7 +1,11 @@
 ### KICKSTART-Jinja-Template ###
+# Use HTTP installation media and Internet-Repository
+url --url "{{kickstart_base_os_url}}"
+repo --name="AppStream" --baseurl="{{kickstart_base_repo_url}}"
 # Use NFS installation media and Internet-Repository
-repo --name="AppStream" --baseurl="http://download.rockylinux.org/pub/rocky/8.9/AppStream/x86_64/os/"
-nfs --server=nas.home.local --dir=/volume1/nfs-iso/downloaded-iso/linux/Rocky-8.9-x86_64-minimal.iso
+#nfs --server=nas.home.local --dir=/volume1/nfs-iso/downloaded-iso/linux/Rocky-8.9-x86_64-minimal.iso
+
+
 # Use text install
 text
 # Don't run the Setup Agent on first boot
@@ -14,10 +18,10 @@ keyboard --vckeymap=de --xlayouts='de'
 lang en_US.UTF-8
 
 # Network information
-network --bootproto=static --device=ens192 --gateway=10.0.249.1 --ip=10.0.249.65 --nameserver=10.0.249.53 --netmask=255.255.255.0 --onboot=on --noipv6 --activate
+network --bootproto=static --device=ens192 --gateway={{vm_template_gateway}} --ip={{vm_template_ip}} --nameserver={{vm_template_dns_server_ip}} --netmask={{vm_template_subnet}} --onboot=on --noipv6 --activate
 
 # Root password
-rootpw Test1234
+rootpw {{vm_root_userpassword}}
 
 # System services
 selinux --permissive
@@ -89,7 +93,7 @@ python3
 groupadd -g 1001 ansible
 useradd -m -g 1001 -u 1001 ansible
 mkdir /home/ansible/.ssh
-echo -e "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCca0UNmx4R3pd0xJxN6mH2oWRJFNnLoSWy7c2kh4Py0VrE1XCAH8YvM5JVAqzPK/GrfYrzas+7vx6gtDP48Z7Aif9xKs/pR4djNIcw1QILx3g2C2uqPqS1/xiCskHwFjI0s2Xrv/3vizpA8BCj4JF2nholaLJo99AFKcLN0NFz04IVpXPYXxMUpybqoy1aNyxtruFMTS45YT9SZ8Y9doqSN9PlHc5k0n2NJTn6lJMi9fDFc3NaxHu9ffrqPIf6mGkmVNGsXFcNRute43Wn4H5HvFQ7eG+N9QSDj4S4KdZYwVrJ8jQpvR/xJB0lItn5hq6oFyBuAnvCPmm54xg96yJQE6SYqTfbQj8gI6X8M1ZdW4tHvSRos8gpzWizsAEBz0ToL6Lf0KCqDb6UEy49I9BhU+0loWhMWrwI7S3Z3kwAkzJUc5bEJzkBopN3un3zCc4UfHIdIDE7MkKL54lC3Z8Pcr+OZAqk8G9iTX7F4A4f32jbDv+6JAT/2IzJdSI5NnM= root@TPPJAHN2" >  /home/ansible/.ssh/authorized_keys
+echo -e "{{vm_ssh_publickey}}" >  /home/ansible/.ssh/authorized_keys
 chown -R ansible:ansible /home/ansible/.ssh
 chmod 700 /home/ansible/.ssh
 chmod 600 /home/ansible/.ssh/authorized_keys

@@ -11,10 +11,10 @@ packer_builder_ip: "10.0.249.20"
 packer_builder_subnet: "255.255.255.0"
 packer_builder_gateway: "10.0.249.1"
 packer_builder_dns_server_ip: "10.0.249.53"
-packer_build_version: "9-1"
+packer_build_version: "8-9-1"
 
 # These settings are for the vm-template
-vm_template_name: "template-rockylinux8-{{packer_build_version}}"
+vm_template_name: "template-rockylinux-{{packer_build_version}}"
 vm_template_hostname: "template-rocky89"
 vm_template_ip: "10.0.249.65"
 vm_template_subnet: "255.255.255.0"
@@ -26,6 +26,7 @@ vm_template_disk: "40960" # 40GB
 vm_guestostype: "centos8_64Guest"
 vm_root_user: "root"
 vm_root_userpassword: "Test1234"
+vm_ssh_publickey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCca0UNmx4R3pd0xJxN6mH2oWRJFNnLoSWy7c2kh4Py0VrE1XCAH8YvM5JVAqzPK/GrfYrzas+7vx6gtDP48Z7Aif9xKs/pR4djNIcw1QILx3g2C2uqPqS1/xiCskHwFjI0s2Xrv/3vizpA8BCj4JF2nholaLJo99AFKcLN0NFz04IVpXPYXxMUpybqoy1aNyxtruFMTS45YT9SZ8Y9doqSN9PlHc5k0n2NJTn6lJMi9fDFc3NaxHu9ffrqPIf6mGkmVNGsXFcNRute43Wn4H5HvFQ7eG+N9QSDj4S4KdZYwVrJ8jQpvR/xJB0lItn5hq6oFyBuAnvCPmm54xg96yJQE6SYqTfbQj8gI6X8M1ZdW4tHvSRos8gpzWizsAEBz0ToL6Lf0KCqDb6UEy49I9BhU+0loWhMWrwI7S3Z3kwAkzJUc5bEJzkBopN3un3zCc4UfHIdIDE7MkKL54lC3Z8Pcr+OZAqk8G9iTX7F4A4f32jbDv+6JAT/2IzJdSI5NnM= root@TPPJAHN2"
 
 # These are the vcenter-settings
 vcenter_fqdn: "vcenter.home.local"
@@ -41,8 +42,10 @@ vcenter_iso_path: "[nfs] downloaded-iso/linux/Rocky-8.9-x86_64-boot.iso"
 domain: "home.local"
 
 # The path for the kickstart-file
-kickstart_filename: "rocky89-boot.cfg"
-
+kickstart_filename: "{{vm_template_name}}.cfg"
+kickstart_base_repo_url: "http://download.rockylinux.org/pub/rocky/8.9/AppStream/x86_64/os/"
+kickstart_base_os_url: "http://download.rockylinux.org/pub/rocky/8.9/BaseOS/x86_64/os/"
+kickstart_distri_iso_url: "http://download.rockylinux.org/pub/rocky/8.9/isos/x86_64/Rocky-8.9-x86_64-minimal.iso"
 
 
 
