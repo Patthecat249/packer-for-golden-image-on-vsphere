@@ -15,3 +15,10 @@
     url: "{{ packer_download_url }}"
     dest: "{{ packer_installation_directory }}/packer.zip"
     mode: '0644'
+
+- name: "Install some necessary Tools"
+  ansible.builtin.yum:
+    name:
+      - tar-2:1.30-9.el8.x86_64
+      - unzip-6.0-46.el8.x86_64
+    state: present

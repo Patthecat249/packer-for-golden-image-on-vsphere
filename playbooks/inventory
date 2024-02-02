@@ -1,2 +1,2 @@
 [packer]
-packer-build-host
+packer.home.local

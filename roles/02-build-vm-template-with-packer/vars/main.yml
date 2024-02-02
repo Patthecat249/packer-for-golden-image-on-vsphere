@@ -7,7 +7,7 @@ dir_work: "/opt/sva/"
 
 # This is the host, where packer is installed
 packer_builder_hostname: "packer-build-host"
-packer_builder_ip: "10.0.249.20"
+packer_builder_ip: "10.0.249.70"
 packer_builder_subnet: "255.255.255.0"
 packer_builder_gateway: "10.0.249.1"
 packer_builder_dns_server_ip: "10.0.249.53"
@@ -20,8 +20,8 @@ vm_template_ip: "10.0.249.65"
 vm_template_subnet: "255.255.255.0"
 vm_template_gateway: "10.0.249.1"
 vm_template_dns_server_ip: "10.0.249.53"
-vm_template_cpu: "2"
-vm_template_ram: "2048"   # 2GB
+vm_template_cpu: "4"
+vm_template_ram: "8192"   # 8GB
 vm_template_disk: "40960" # 40GB
 vm_guestostype: "centos8_64Guest"
 vm_root_user: "root"
